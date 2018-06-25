@@ -100,7 +100,7 @@ public class DijkstraAlgorithm {
             return null;
         
         path.add(step.getLabel());
-        // FAILING 1U -> 1E; 1E -> 3M
+
         while(predecessors.get(step) != null){
             step = predecessors.get(step);
             path.add(step.getLabel());

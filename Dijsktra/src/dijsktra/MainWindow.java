@@ -188,8 +188,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         panel1E.setPreferredSize(new java.awt.Dimension(100, 100));
         panel1E.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panel1EMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panel1EMousePressed(evt);
             }
         });
 
@@ -216,8 +216,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         panel3M.setPreferredSize(new java.awt.Dimension(100, 100));
         panel3M.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panel3MMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panel3MMousePressed(evt);
             }
         });
 
@@ -243,8 +243,8 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(panel3M, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 240, -1, -1));
 
         panel1N.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panel1NMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panel1NMousePressed(evt);
             }
         });
 
@@ -271,8 +271,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         panel3Q.setPreferredSize(new java.awt.Dimension(100, 100));
         panel3Q.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panel3QMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panel3QMousePressed(evt);
             }
         });
 
@@ -299,8 +299,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         panel1B.setPreferredSize(new java.awt.Dimension(100, 100));
         panel1B.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panel1BMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panel1BMousePressed(evt);
             }
         });
 
@@ -327,8 +327,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         panel1C.setPreferredSize(new java.awt.Dimension(100, 100));
         panel1C.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panel1CMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panel1CMousePressed(evt);
             }
         });
 
@@ -355,8 +355,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         panel5R.setPreferredSize(new java.awt.Dimension(100, 100));
         panel5R.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panel5RMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panel5RMousePressed(evt);
             }
         });
 
@@ -383,8 +383,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         panel1U.setPreferredSize(new java.awt.Dimension(100, 100));
         panel1U.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panel1UMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panel1UMousePressed(evt);
             }
         });
 
@@ -459,24 +459,24 @@ public class MainWindow extends javax.swing.JFrame {
 
         buttonDijkstra.setText("Achar menor caminho");
         buttonDijkstra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buttonDijkstraMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                buttonDijkstraMousePressed(evt);
             }
         });
         getContentPane().add(buttonDijkstra, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 480, 170, 40));
 
         buttonOrigin.setText("Selecionar origem");
         buttonOrigin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buttonOriginMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                buttonOriginMousePressed(evt);
             }
         });
         getContentPane().add(buttonOrigin, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 350, 170, 40));
 
         buttonDestination.setText("Selecionar destino");
         buttonDestination.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buttonDestinationMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                buttonDestinationMousePressed(evt);
             }
         });
         getContentPane().add(buttonDestination, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 400, 170, 40));
@@ -484,73 +484,73 @@ public class MainWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void panel1NMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1NMouseClicked
+    private void panel1NMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1NMousePressed
         JPanel panel = this.panel1N;
         String panel_label = "1N";
         if(this.selection_stage == 1) this.selectOrigin(panel, panel_label);
         else if(this.selection_stage == 2) this.selectDestination(panel, panel_label);
-    }//GEN-LAST:event_panel1NMouseClicked
+    }//GEN-LAST:event_panel1NMousePressed
 
-    private void panel1UMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1UMouseClicked
+    private void panel1UMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1UMousePressed
         JPanel panel = this.panel1U;
         String panel_label = "1U";
         if(this.selection_stage == 1) this.selectOrigin(panel, panel_label);
         else if(this.selection_stage == 2) this.selectDestination(panel, panel_label);
-    }//GEN-LAST:event_panel1UMouseClicked
+    }//GEN-LAST:event_panel1UMousePressed
 
-    private void panel5RMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel5RMouseClicked
-        JPanel panel = this.panel5R;
-        String panel_label = "5R";
-        if(this.selection_stage == 1) this.selectOrigin(panel, panel_label);
-        else if(this.selection_stage == 2) this.selectDestination(panel, panel_label);
-    }//GEN-LAST:event_panel5RMouseClicked
-
-    private void panel1EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1EMouseClicked
+    private void panel1EMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1EMousePressed
         JPanel panel = this.panel1E;
         String panel_label = "1E";
         if(this.selection_stage == 1) this.selectOrigin(panel, panel_label);
         else if(this.selection_stage == 2) this.selectDestination(panel, panel_label);
-    }//GEN-LAST:event_panel1EMouseClicked
+    }//GEN-LAST:event_panel1EMousePressed
 
-    private void panel3MMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel3MMouseClicked
+    private void panel5RMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel5RMousePressed
+        JPanel panel = this.panel5R;
+        String panel_label = "5R";
+        if(this.selection_stage == 1) this.selectOrigin(panel, panel_label);
+        else if(this.selection_stage == 2) this.selectDestination(panel, panel_label);
+    }//GEN-LAST:event_panel5RMousePressed
+
+    private void panel3MMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel3MMousePressed
         JPanel panel = this.panel3M;
         String panel_label = "3M";
         if(this.selection_stage == 1) this.selectOrigin(panel, panel_label);
         else if(this.selection_stage == 2) this.selectDestination(panel, panel_label);
-    }//GEN-LAST:event_panel3MMouseClicked
+    }//GEN-LAST:event_panel3MMousePressed
 
-    private void panel1CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1CMouseClicked
+    private void panel1CMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1CMousePressed
         JPanel panel = this.panel1C;
         String panel_label = "1C";
         if(this.selection_stage == 1) this.selectOrigin(panel, panel_label);
         else if(this.selection_stage == 2) this.selectDestination(panel, panel_label);
-    }//GEN-LAST:event_panel1CMouseClicked
+    }//GEN-LAST:event_panel1CMousePressed
 
-    private void panel1BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1BMouseClicked
-        JPanel panel = this.panel1B;
-        String panel_label = "1B";
-        if(this.selection_stage == 1) this.selectOrigin(panel, panel_label);
-        else if(this.selection_stage == 2) this.selectDestination(panel, panel_label);
-    }//GEN-LAST:event_panel1BMouseClicked
-
-    private void panel3QMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel3QMouseClicked
+    private void panel3QMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel3QMousePressed
         JPanel panel = this.panel3Q;
         String panel_label = "3Q";
         if(this.selection_stage == 1) this.selectOrigin(panel, panel_label);
         else if(this.selection_stage == 2) this.selectDestination(panel, panel_label);
-    }//GEN-LAST:event_panel3QMouseClicked
+    }//GEN-LAST:event_panel3QMousePressed
 
-    private void buttonOriginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonOriginMouseClicked
+    private void panel1BMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1BMousePressed
+        JPanel panel = this.panel1B;
+        String panel_label = "1B";
+        if(this.selection_stage == 1) this.selectOrigin(panel, panel_label);
+        else if(this.selection_stage == 2) this.selectDestination(panel, panel_label);
+    }//GEN-LAST:event_panel1BMousePressed
+
+    private void buttonOriginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonOriginMousePressed
         this.selection_stage = 1;
-    }//GEN-LAST:event_buttonOriginMouseClicked
+    }//GEN-LAST:event_buttonOriginMousePressed
 
-    private void buttonDestinationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonDestinationMouseClicked
+    private void buttonDestinationMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonDestinationMousePressed
         this.selection_stage = 2;
-    }//GEN-LAST:event_buttonDestinationMouseClicked
+    }//GEN-LAST:event_buttonDestinationMousePressed
 
-    private void buttonDijkstraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonDijkstraMouseClicked
+    private void buttonDijkstraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonDijkstraMousePressed
         this.shortestPath();
-    }//GEN-LAST:event_buttonDijkstraMouseClicked
+    }//GEN-LAST:event_buttonDijkstraMousePressed
 
     /**
      * @param args the command line arguments
