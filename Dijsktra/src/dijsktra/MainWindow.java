@@ -173,6 +173,8 @@ public class MainWindow extends javax.swing.JFrame {
         buttonDijkstra = new javax.swing.JButton();
         buttonOrigin = new javax.swing.JButton();
         buttonDestination = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        labelDistance = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dijkstra");
@@ -463,7 +465,7 @@ public class MainWindow extends javax.swing.JFrame {
                 buttonDijkstraMousePressed(evt);
             }
         });
-        getContentPane().add(buttonDijkstra, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 480, 170, 40));
+        getContentPane().add(buttonDijkstra, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 430, 170, 40));
 
         buttonOrigin.setText("Selecionar origem");
         buttonOrigin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -471,7 +473,7 @@ public class MainWindow extends javax.swing.JFrame {
                 buttonOriginMousePressed(evt);
             }
         });
-        getContentPane().add(buttonOrigin, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 350, 170, 40));
+        getContentPane().add(buttonOrigin, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 310, 170, 40));
 
         buttonDestination.setText("Selecionar destino");
         buttonDestination.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -479,7 +481,13 @@ public class MainWindow extends javax.swing.JFrame {
                 buttonDestinationMousePressed(evt);
             }
         });
-        getContentPane().add(buttonDestination, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 400, 170, 40));
+        getContentPane().add(buttonDestination, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 360, 170, 40));
+
+        jLabel1.setText("Menor caminho:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 480, -1, -1));
+
+        labelDistance.setText("0");
+        getContentPane().add(labelDistance, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 480, 30, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -591,6 +599,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton buttonDestination;
     private javax.swing.JButton buttonDijkstra;
     private javax.swing.JButton buttonOrigin;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
@@ -599,6 +608,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel labelDistance;
     private javax.swing.JPanel panel1B;
     private javax.swing.JPanel panel1C;
     private javax.swing.JPanel panel1E;
@@ -620,8 +630,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel weight_8;
     private javax.swing.JLabel weight_9;
     // End of variables declaration//GEN-END:variables
-
-    
+     
     private void selectOrigin(JPanel panel, String label) {
         this.lines_to_paint.clear();
         this.repaint();
@@ -634,20 +643,8 @@ public class MainWindow extends javax.swing.JFrame {
         panel.setBackground(Color.green);
         this.buttonOrigin.setText("Selecionar origem (" + label + ")");
 
-        
-        for(String panel_label: this.panels.keySet()){
-            if(!panel_label.equals(this.origin) &&
-               !panel_label.equals(this.destination)){
-                this.panels.get(panel_label).setBackground(Color.gray);
-            }
-        }
-        
-        if(!this.origin.equals("") && !this.destination.equals("")){
-            this.buttonDijkstra.setEnabled(true);
-        }
-        else{
-            this.buttonDijkstra.setEnabled(false);
-        }
+        this.resetPanels();
+        this.toggleStartButton();
     }
 
     private void selectDestination(JPanel panel, String label) {
@@ -662,19 +659,8 @@ public class MainWindow extends javax.swing.JFrame {
         panel.setBackground(Color.yellow);
         this.buttonDestination.setText("Selecionar destino (" + label + ")");
 
-        for(String panel_label: this.panels.keySet()){
-            if(!panel_label.equals(this.origin) &&
-               !panel_label.equals(this.destination)){
-                this.panels.get(panel_label).setBackground(Color.gray);
-            }
-        }
-        
-        if(!this.origin.equals("") && !this.destination.equals("")){
-            this.buttonDijkstra.setEnabled(true);
-        }
-        else{
-            this.buttonDijkstra.setEnabled(false);
-        }
+        this.resetPanels();
+        this.toggleStartButton();
     }
 
     private void shortestPath() {
@@ -686,24 +672,30 @@ public class MainWindow extends javax.swing.JFrame {
             if(vertex.getLabel().equals(this.destination)) v_destination = vertex;
         }
         
-        LinkedList<String> path = new DijkstraAlgorithm(this.graph).shortestPath(v_origin, v_destination);
+        DistPath dist_path = new DijkstraAlgorithm(this.graph).shortestPath(v_origin, v_destination);
         
-        this.paintPanels(path);
-        
+        LinkedList<String> path = dist_path.getPath();
         Set<String> lines = new HashSet<>();
         
         for(int i=0; i<path.size()-1; i++){
             lines.add(path.get(i) + path.get(i+1));
             lines.add(path.get(i+1) + path.get(i));
         }
+        
         this.paintLines(lines);
+        
+        path.pollFirst();
+        path.pollLast();
+        this.paintPanels(path);
+        
+        this.labelDistance.setText(String.valueOf(dist_path.getDistance()));
+        this.labelDistance.revalidate();
                 
     }
 
     private void paintPanels(LinkedList<String> panel_labels) {
         for(String panel_label: panel_labels){
-            if(!panel_label.equals(this.origin) && !panel_label.equals(this.destination))
-                this.panels.get(panel_label).setBackground(Color.red);
+            this.panels.get(panel_label).setBackground(Color.red);
         }
     }
 
@@ -731,5 +723,24 @@ public class MainWindow extends javax.swing.JFrame {
         this.weight_9.setForeground(Color.black);
         this.weight_10.setForeground(Color.black);
         this.weight_11.setForeground(Color.black);
+    }
+    
+    private void resetPanels(){
+        this.labelDistance.setText("0");
+        for(String panel_label: this.panels.keySet()){
+            if(!panel_label.equals(this.origin) &&
+               !panel_label.equals(this.destination)){
+                this.panels.get(panel_label).setBackground(Color.gray);
+            }
+        }
+    }
+    
+    private void toggleStartButton(){
+        if(!this.origin.equals("") && !this.destination.equals("")){
+            this.buttonDijkstra.setEnabled(true);
+        }
+        else{
+            this.buttonDijkstra.setEnabled(false);
+        }
     }
 }

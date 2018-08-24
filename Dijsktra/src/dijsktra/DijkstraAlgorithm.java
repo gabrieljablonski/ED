@@ -44,8 +44,8 @@ public class DijkstraAlgorithm {
         }
         return neighbors;
     }
-    
-    public LinkedList<String> shortestPath(Vertex origin, Vertex destination){
+
+    public DistPath shortestPath(Vertex origin, Vertex destination){
 
         this.settledNodes = new HashSet<>();
         this.unsettledNodes = new HashSet<>();
@@ -100,13 +100,21 @@ public class DijkstraAlgorithm {
             return null;
         
         path.add(step.getLabel());
+        
+        int distance = 0;
+        for(Vertex vertex: this.distances.keySet()){
+            if(vertex.getLabel().equals(destination.getLabel())){
+                distance = this.distances.get(vertex);
+            }
+        }
 
         while(predecessors.get(step) != null){
             step = predecessors.get(step);
             path.add(step.getLabel());
         }
         Collections.reverse(path);
-        return path;
+        
+        return new DistPath(distance, path);
     }
     
     private Vertex minDist(Set<Vertex> vertices){
